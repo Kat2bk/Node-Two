@@ -1,12 +1,18 @@
+
 const express = require('express');
+const postsRouter = require('./data/posts/postsRouter');
 const server = express();
 server.use(express.json());
-const port = 8080;
+
+// use server.use when importing an express router
+
+server.use('/api/posts', postsRouter);
 
 server.get('/', (req, res) => {
     res.send('Welcome to the API')
 })
 
-server.listen(port, (req, res) => {
-console.log(`server is listening at port://${port}`)
+server.listen(8080, (req, res) => {
+console.log(`server is listening at localhost://8080`)
 })
+
